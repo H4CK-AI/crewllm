@@ -3,6 +3,9 @@ from pydantic import BaseModel
 from crewai import Agent, Task, Crew
 
 app = FastAPI()
+@app.get("/")
+def root():
+    return {"message": "CrewAI Email Assistant is running!"}
 
 class EmailData(BaseModel):
     from_: str

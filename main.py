@@ -1,16 +1,18 @@
+# main.py
 from fastapi import FastAPI
 from pydantic import BaseModel
 from crewai import Agent, Task, Crew
 
 app = FastAPI()
-@app.get("/")
-def root():
-    return {"message": "CrewAI Email Assistant is running!"}
 
 class EmailData(BaseModel):
     from_: str
     subject: str
     body: str
+
+@app.get("/")
+def root():
+    return {"message": "FastAPI with CrewAI is running"}
 
 @app.post("/generate-reply")
 def generate_reply(data: EmailData):
